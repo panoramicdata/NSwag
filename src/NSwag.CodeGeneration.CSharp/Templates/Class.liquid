@@ -6,7 +6,7 @@
     [DataContract]
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "{{ ToolchainVersion }}")]
     {%- template Class.Annotations -%}
-    {{ TypeAccessModifier }} {% if IsAbstract %}abstract {% endif %} {% if GenerateNativeRecords %}record{% else %}class{% endif %} {{ClassName}} {%- template Class.Inheritance %}
+    {{ TypeAccessModifier }} {% if IsAbstract %}abstract {% endif %}{% if GenerateNativeRecords %}record{% else %}class{% endif %} {{ClassName}} {%- template Class.Inheritance %}
     {
         {%- template Class.Constructor -%}
     {%- if RenderRecord -%}
@@ -22,18 +22,17 @@
         /// {{ property.PropertyName }}
         /// </summary>
     {% endif %}
-        [DataMember("{{ property.Name }}", EmitDefaultValue = false)]
+        [DataMember(Name = "{{ property.Name }}", EmitDefaultValue = false)]
         public {{ property.Type }} {{ property.PropertyName }}{% if RenderInpc == false and RenderPrism == false %} { get; {% if property.HasSetter and RenderRecord == false %}set; {% elsif RenderRecord and GenerateNativeRecords %}init; {% endif %}}{% if property.HasDefaultValue and RenderRecord == false %} = {{ property.DefaultValue }};{% elsif GenerateNullableReferenceTypes and RenderRecord == false %} = default!;{% endif %}
 {% endif %}
     {%- endfor -%}
 
     {%- if GenerateJsonMethods -%}
         {% template Class.ToJson %}
-        {% template Class.FromJson %}    
+        {% template Class.FromJson %}
     {%- endif -%}
     {%- if RenderInpc -%}
         {% template Class.Inpc %}
     {%- endif -%}
         {% template Class.Body %}
     }
-    
