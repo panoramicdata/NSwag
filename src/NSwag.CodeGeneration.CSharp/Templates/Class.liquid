@@ -20,14 +20,12 @@
     {%-   if property.HasDescription -%}
         /// <summary>
         /// {{ property.Description | csharpdocs }}
-        /// </summary>
-    {%-   else -%}
+        /// </summary>{%-   else -%}
         /// <summary>
         /// {{ property.PropertyName }}
-        /// </summary>
-    {% endif %}
+        /// </summary>{% endif %}
         [DataMember(Name = "{{ property.Name }}", EmitDefaultValue = false)]
-        public {{ property.Type }} {{ property.PropertyName }}{% if RenderInpc == false and RenderPrism == false %} { get; {% if property.HasSetter and RenderRecord == false %}set; {% elsif RenderRecord and GenerateNativeRecords %}init; {% endif %}}{% if property.HasDefaultValue and RenderRecord == false %} = {{ property.DefaultValue }};{% elsif GenerateNullableReferenceTypes and RenderRecord == false %} = default!;{% endif %}
+        public {{ property.Type }} {{ property.PropertyName }}{% if RenderInpc == false and RenderPrism == false %} { get; {% if property.HasSetter and RenderRecord == false %}set; {% elsif RenderRecord and GenerateNativeRecords %}init; {% endif %}}{% if property.HasDefaultValue and RenderRecord == false %} = {{ property.DefaultValue }};{% elsif GenerateNullableReferenceTypes and RenderRecord == false %} = default!;{% else %} = null!;{% endif %}
 {% endif %}
     {%- endfor -%}
 
