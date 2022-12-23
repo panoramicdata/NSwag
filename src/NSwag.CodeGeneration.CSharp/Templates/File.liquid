@@ -12,8 +12,8 @@
 using {{ usage }};
 {% endfor -%}
 
-namespace {{ Namespace }}
-{
+namespace {{ Namespace }};
+
     {{ Clients | tab }}
 
 {% if GenerateContracts -%}
@@ -197,4 +197,3 @@ namespace {{ Namespace }}
 {%     endif -%}
 {%- endif %}
 
-}

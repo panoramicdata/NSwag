@@ -7,7 +7,7 @@ public interface I{{ Class }}{% if HasClientBaseInterface %} : {{ ClientBaseInte
     {% template Client.Method.Documentation %}
     {% template Client.Method.Annotations %}
     [{{ operation.HttpMethodUpper }}("/{{ operation.Path }}")]
-    Task<{{ operation.UnwrappedResultType }}> {{ operation.ActualOperationName }}Async(
+    Task<{{ operation.UnwrappedResultType }}> {{ operation.Id }}Async(
         {% for parameter in operation.Parameters %}[AliasAs("{{ parameter.VariableName }}")] {{ parameter.Type }} {{ parameter.VariableName }}{% if GenerateOptionalParameters and parameter.IsOptional %} = null{% endif %},
         {% endfor %}CancellationToken cancellationToken{% if GenerateOptionalParameters %} = default(CancellationToken){% endif %});
 
