@@ -8,18 +8,16 @@
 /// {{ operation.Description | csharpdocs }}
 /// </remarks>
 {% endif -%}
+{% for exception in operation.ExceptionDescriptions -%}
+/// <exception cref="{{ exception.Type }}">{{ exception.Description }}</exception>
+{% endfor -%}
 {% for parameter in operation.Parameters -%}
 {%     if parameter.HasDescription -%}
 /// <param name="{{ parameter.VariableIdentifier }}">{{ parameter.Description | csharpdocs }}</param>
 {%     endif -%}
 {% endfor -%}
-{% if operation.HasResultDescription -%}
-/// <returns>{{ operation.ResultDescription | csharpdocs }}</returns>
-{% endif -%}
+/// <returns>Task of {{ operation.UnwrappedResultType }}</returns>
 /// <exception cref="Client.{{ ExceptionClass }}">Thrown when fails to make API call</exception>
-{% for exception in operation.ExceptionDescriptions -%}
-/// <exception cref="{{ exception.Type }}">{{ exception.Description }}</exception>
-{% endfor -%}
 {% if operation.IsDeprecated -%}
 [System.Obsolete]
 {% endif -%}

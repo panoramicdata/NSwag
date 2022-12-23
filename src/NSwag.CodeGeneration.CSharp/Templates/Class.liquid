@@ -1,8 +1,12 @@
-{%- if HasDescription -%}
+{%-   if property.HasDescription -%}
     /// <summary>
-    /// {{ Description | csharpdocs }}
+    /// {{ property.Description | csharpdocs }}
     /// </summary>
-    {%- endif -%}
+{%-   else -%}
+    /// <summary>
+    /// {{ property.PropertyName }}
+    /// </summary>
+{% endif %}
     [DataContract]
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "{{ ToolchainVersion }}")]
     {%- template Class.Annotations -%}

@@ -12,12 +12,8 @@
 using {{ usage }};
 {% endfor -%}
 
-{% template File.Header %}
-
 namespace {{ Namespace }}
 {
-    using System = global::System;
-
     {{ Clients | tab }}
 
 {% if GenerateContracts -%}
@@ -202,11 +198,3 @@ namespace {{ Namespace }}
 {%- endif %}
 
 }
-
-#pragma warning restore 1591
-#pragma warning restore 1573
-#pragma warning restore  472
-#pragma warning restore  114
-#pragma warning restore  108
-#pragma warning restore 3016
-#pragma warning restore 8603
