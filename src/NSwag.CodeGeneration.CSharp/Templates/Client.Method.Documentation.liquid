@@ -13,9 +13,7 @@
 {% endfor -%}
 /// <exception cref="Client.{{ ExceptionClass }}">Thrown when fails to make API call</exception>
 {% for parameter in operation.Parameters -%}
-{%     if parameter.HasDescription -%}
-/// <param name="{{ parameter.VariableIdentifier }}">{{ parameter.Description | csharpdocs }}</param>
-{%     endif -%}
+/// <param name="{{ parameter.VariableIdentifier }}">{%     if parameter.HasDescription -%}{{ parameter.Description | csharpdocs }}{%     endif -%}</param>
 {% endfor -%}
 /// <returns>Task of {{ operation.UnwrappedResultType }}</returns>
 {% if operation.IsDeprecated -%}
