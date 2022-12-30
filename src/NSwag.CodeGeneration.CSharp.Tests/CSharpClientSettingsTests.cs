@@ -132,7 +132,7 @@ namespace NSwag.CodeGeneration.CSharp.Tests
             var code = generator.GenerateFile();
 
             // Assert
-            Assert.Contains("public partial interface IFooClient\n", code);
+            Assert.Contains("public interface IFooClient\n", code);
         }
 
         [Fact]
@@ -152,7 +152,7 @@ namespace NSwag.CodeGeneration.CSharp.Tests
             var code = generator.GenerateFile();
 
             // Assert
-            Assert.Contains("public partial interface IFooClient : IClientBase", code);
+            Assert.Contains("public interface IFooClient : IClientBase", code);
         }
     }
 }
