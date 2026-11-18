@@ -1,3 +1,8 @@
+> [!CAUTION]
+> ## This repository is retired and archived
+>
+> Retired on 2026-11-18 under OPS-160647. Unmaintained fork of RicoSuter/NSwag, untouched since 2023-07; kept read-only because branch customRefitTemplates holds 48 commits of our own 2022 multi-file generator work never sent upstream. It is read-only and unsupported.
+
 ## NSwag: The Swagger/OpenAPI toolchain for .NET, ASP.NET Core and TypeScript
 
 NSwag | [NJsonSchema](http://njsonschema.org) | [Apimundo](https://apimundo.com) | [Namotion.Reflection](https://github.com/RicoSuter/Namotion.Reflection)
